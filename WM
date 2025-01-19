@@ -106,7 +106,7 @@ local silentStates = {
 
 --// Crosshair Drawing (IGNORE / or look at it idrc)
 --// IT FOLLOWS CURSOR NOW!!
-local player = game.Players.LocalPlayer
+local player = Players.LocalPlayer
 local mouse = player:GetMouse()
 
 local lines = {}
