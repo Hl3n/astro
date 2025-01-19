@@ -1,0 +1,126 @@
+local WaterMark = Instance.new("ScreenGui")
+local Build = "paid"
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
+local rs = game:GetService("RunService")
+local InputService = game:GetService('UserInputService')
+local RenderStepped = rs.RenderStepped
+WaterMark.Name = "WaterMark"
+WaterMark.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+WaterMark.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Frame.Parent = WaterMark
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.0876519531, 0, 0.098341234, 0)
+Frame.Size = UDim2.new(0, 300, 0, 25)
+Frame.Active = true
+local Players = game:GetService('Players')
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+Frame.InputBegan:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+        local ObjPos = Vector2.new(
+            Mouse.X - Frame.AbsolutePosition.X,
+            Mouse.Y - Frame.AbsolutePosition.Y
+        )
+        if ObjPos.Y > (40) then
+            return
+        end
+        while InputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+            Frame.Position = UDim2.new(
+                0,
+                Mouse.X - ObjPos.X + (Frame.Size.X.Offset * Frame.AnchorPoint.X),
+                0,
+                Mouse.Y - ObjPos.Y + (Frame.Size.Y.Offset * Frame.AnchorPoint.Y)
+            )
+            RenderStepped:Wait()
+        end
+    end
+end)
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BackgroundTransparency = 0.800
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Size = UDim2.new(0, 300, 0, 25)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Loading UI"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 15.000
+TextLabel.RichText = true 
+UICorner.CornerRadius = UDim.new(0, 1)
+UICorner.Parent = TextLabel
+UICorner_2.CornerRadius = UDim.new(0, 1)
+UICorner_2.Parent = Frame
+local uiStroke = Instance.new("UIStroke")
+uiStroke.Parent = Frame
+uiStroke.Color = Color3.fromRGB(93, 63, 211)
+uiStroke.Thickness = 2
+local uiGradient = Instance.new("UIGradient")
+uiGradient.Parent = uiStroke
+uiGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(93, 63, 211)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
+})
+uiGradient.Rotation = 0
+local loadingui = true
+local loadinguibool = 5
+local silentanim = 'N/A'
+wait(0.5)
+local updateInterval = 0.36
+local lastUpdateTime = 0
+rs.RenderStepped:Connect(function(delta)
+    lastUpdateTime = lastUpdateTime + delta 
+    local time = os.date('%I:%M:%S %p', os.time())
+    local fps = 1 / delta
+    local roundedFps = math.floor(fps + 0.5)
+    if lastUpdateTime >= updateInterval then
+        TextLabel.Text = silentanim .. " / FPS: " .. roundedFps .. " / build: " .. Build .. " / " .. time
+        lastUpdateTime = 0
+    end
+    uiGradient.Rotation = (uiGradient.Rotation + 1) % 360
+end)
+local colors = "rgb(51, 0, 255)"
+local silentStates = {
+    'Astro<font color="' .. colors .. '">.cc</font>',
+    'Astro<font color="' .. colors .. '">.c</font>',
+    'Astro<font color="' .. colors .. '">.</font>',
+    'Astro<font color="' .. colors .. '"></font>',
+    'Astron<font color="' .. colors .. '"></font>',
+    'Astro<font color="' .. colors .. '"></font>',
+    'Ast<font color="' .. colors .. '"></font>',
+    'A<font color="' .. colors .. '"></font>',
+    'A<font color="' .. colors .. '"></font>',
+    'Ast<font color="' .. colors .. '"></font>',
+    'Astr<font color="' .. colors .. '"></font>',
+    'Astro<font color="' .. colors .. '"></font>',
+    'Astro<font color="' .. colors .. '"></font>',
+    'Astro<font color="' .. colors .. '">.</font>',
+    'Astro<font color="' .. colors .. '">.c</font>',
+    'Astro<font color="' .. colors .. '">.cc</font>'
+}
+
+--// Crosshair Drawing (IGNORE / or look at it idrc)
+--// IT FOLLOWS CURSOR NOW!!
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+local lines = {}
+local outline = Drawing.new("Square")
+outline.Visible = true
+outline.Size = Vector2.new(4, 4)
+outline.Color = Color3.fromRGB(0, 0, 0)
+outline.Filled = true
+outline.ZIndex = 1
+outline.Transparency = 1
+
+
+while true do
+    for _, state in ipairs(silentStates) do
+        silentanim = state
+        wait(0.86)
+    end
+end
