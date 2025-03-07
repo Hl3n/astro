@@ -59,7 +59,7 @@ UICorner_2.Parent = Frame
 local uiStroke = Instance.new("UIStroke")
 uiStroke.Parent = Frame
 uiStroke.Color = Color3.fromRGB(93, 63, 211)
-uiStroke.Thickness = 2
+uiStroke.Thickness = 1
 local uiGradient = Instance.new("UIGradient")
 uiGradient.Parent = uiStroke
 uiGradient.Color = ColorSequence.new({
@@ -86,22 +86,23 @@ rs.RenderStepped:Connect(function(delta)
 end)
 local colors = "rgb(51, 0, 255)"
 local silentStates = {
-    'Astro<font color="' .. colors .. '">.cc</font>',
-    'Astro<font color="' .. colors .. '">.c</font>',
-    'Astro<font color="' .. colors .. '">.</font>',
-    'Astro<font color="' .. colors .. '"></font>',
-    'Astron<font color="' .. colors .. '"></font>',
-    'Astro<font color="' .. colors .. '"></font>',
-    'Ast<font color="' .. colors .. '"></font>',
-    'A<font color="' .. colors .. '"></font>',
-    'A<font color="' .. colors .. '"></font>',
-    'Ast<font color="' .. colors .. '"></font>',
-    'Astr<font color="' .. colors .. '"></font>',
-    'Astro<font color="' .. colors .. '"></font>',
-    'Astro<font color="' .. colors .. '"></font>',
-    'Astro<font color="' .. colors .. '">.</font>',
-    'Astro<font color="' .. colors .. '">.c</font>',
-    'Astro<font color="' .. colors .. '">.cc</font>'
+'Opus<font color="' .. colors .. '">.xyz</font>',
+'Opus<font color="' .. colors .. '">.xy</font>',
+'Opus<font color="' .. colors .. '">.x</font>',
+'Opus<font color="' .. colors .. '">.</font>',
+'Opus<font color="' .. colors .. '"></font>',
+'Opu<font color="' .. colors .. '"></font>',
+'Op<font color="' .. colors .. '"></font>',
+'O<font color="' .. colors .. '"></font>',
+'Op<font color="' .. colors .. '"></font>',
+'Opu<font color="' .. colors .. '"></font>',
+'Opus<font color="' .. colors .. '"></font>',
+'Opus<font color="' .. colors .. '">.</font>',
+'Opus<font color="' .. colors .. '">.x</font>',
+'Opus<font color="' .. colors .. '">.xy</font>',
+'Opus<font color="' .. colors .. '">.xyz</font>'
+
+
 }
 
 --// Crosshair Drawing (IGNORE / or look at it idrc)
